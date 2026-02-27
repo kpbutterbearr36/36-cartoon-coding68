@@ -16,10 +16,32 @@ Original file is located at
     https://colab.research.google.com/drive/1J084Z-hopUZTL__5mGm0XlGb8UZmNiJc
 """
 
-#โปรเเกรมคำนวณอายุจากปีเกิด
-print(" ยินดีต้อนรับเข้าสู่โปรเเกรมคำนวณอายุจากปีเกิดค่ะ")
-birth_year = int(input("กรุณากรอกปีเกิด (ค.ศ.): "))
-current_year = 2026
-age = current_year - birth_year
-print("อายุของคุณคือ",age, "ปี")
-print("ผู้พัฒนาโปรเเกรม : คุณภัทร ยงยืน น้องการ์ตูนค่ะ")
+# โปรแกรมคำนวณอายุจากปีเกิด
+
+from datetime import datetime
+
+print("===================================")
+print("  ยินดีต้อนรับสู่โปรแกรมคำนวณอายุ ")
+print("===================================")
+
+try:
+    # รับค่าปีเกิดจากผู้ใช้
+    birth_year = int(input("กรุณากรอกปีเกิด (ค.ศ.): "))
+
+    # ดึงปีปัจจุบันอัตโนมัติ
+    current_year = datetime.now().year
+
+    # ตรวจสอบความถูกต้องของปีเกิด
+    if birth_year > current_year:
+        print("❌ ปีเกิดต้องไม่มากกว่าปีปัจจุบัน")
+    elif birth_year < 1900:
+        print("❌ กรุณากรอกปีเกิดที่ถูกต้อง (ตั้งแต่ปี 1900 เป็นต้นไป)")
+    else:
+        age = current_year - birth_year
+        print(f"✅ อายุของคุณคือ {age} ปี")
+
+except ValueError:
+    print("❌ กรุณากรอกตัวเลขปีเกิดให้ถูกต้อง")
+
+print("-----------------------------------")
+print("ผู้พัฒนาโปรแกรม : คุณภัทร ยงยืน (น้องการ์ตูน)")
